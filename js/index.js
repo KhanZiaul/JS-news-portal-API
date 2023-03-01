@@ -2,12 +2,16 @@ let dataForTrendPick = [];
 
 let categoryNameIs ;
 
+// all news fetch
+
 const newsData = () => {
 
     fetch('https://openapi.programming-hero.com/api/news/categories')
         .then(res => res.json())
         .then(news => showAllNews(news));
 };
+
+// show category name section
 
 function showAllNews(allNews) {
 
@@ -29,6 +33,8 @@ function showAllNews(allNews) {
 
 };
 
+// categoryId fetch
+
 function showCategory(categoryId, categoryName) {
 
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
@@ -46,6 +52,8 @@ function showCategory(categoryId, categoryName) {
             showCategoryNameList(data.data, categoryName)
         })
 }
+
+// show category name and list section & card section
 
 function showCategoryNameList(data, categoryName) {
 
@@ -117,6 +125,7 @@ function showCategoryNameList(data, categoryName) {
 
 }
 
+// modal fetch
 
 function details(serial) {
 
@@ -125,6 +134,8 @@ function details(serial) {
         .then(res => res.json())
         .then(data => showDetails(data.data[0]))
 }
+
+// modal section 
 
 function showDetails(data) {
 
