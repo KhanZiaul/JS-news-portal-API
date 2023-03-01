@@ -38,13 +38,39 @@ function showCategory(categoryId, categoryName) {
 
 function showCategoryNameList(data, categoryName) {
 
-    console.log(data);
-
     document.getElementById('categoryItems').innerText = data.length;
 
     document.getElementById('categoryName').innerText = categoryName;
 
-    console.log('clicked');
+
+    const news = document.getElementById('news');
+
+    news.innerHTML = ""; 
+
+    data.forEach(element =>{
+
+        const createDiv = document.createElement('div');
+
+        createDiv.classList.add('flex');
+
+        createDiv.classList.add('p-5'); 
+
+        createDiv.classList.add('gap-5');
+    
+        createDiv.innerHTML = `
+    
+        <div class="w-[50%]">
+            <img src="${element.image_url}" class="w-[600px]" alt="no image found">
+        </div>
+        <div class="w-[50%]">
+            <h2 class="text-justify">${element.details}</h2>
+        </div>
+        `;
+
+        news.appendChild(createDiv);
+    });
+
+    console.log(data[0].details);
 
 }
 
