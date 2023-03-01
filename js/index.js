@@ -1,6 +1,6 @@
 let dataForTrendPick = [];
 
-let categoryNameIs ;
+let categoryNameIs;
 
 // all news fetch
 
@@ -139,6 +139,8 @@ function details(serial) {
 
 function showDetails(data) {
 
+    console.log(data);
+
     const image = document.getElementById('image');
 
     image.setAttribute('src', `${data?.image_url}`);
@@ -153,13 +155,46 @@ function showDetails(data) {
 
     const isTrend = document.getElementById('isTrend');
 
+    const author = document.getElementById('author');
+
+    const createElements = document.getElementById('div');
+
+    author.innerHTML = `
+
+    <div>
+
+    <p class="mt-4 mb-2 font-bold"> Author</p>
+
+    <img src="${data?.author?.img}" class="w-[50px] rounded-full" alt="no image found">
+
+    <h2 > ${data?.author?.name ? data.author.name : 'Unknown'} </h2>
+
+    <h2> ${data?.author?.published_date} </h2>
+
+    </div>
+
+    <div>
+
+    <p class="mt-4 mb-2 font-bold">Total Views</p>
+
+    <div class="flex gap-3">
+
+    <div> <i class="fa-solid fa-eye"> </i> </div>
+
+    <div> <p>${data?.total_view ? data.total_view : 'No view'}</p> </div>
+
+    </div>
+
+    </div>
+    `;
+
     data?.others_info?.is_trending ? isTrend.classList.remove('hidden') : isTrend.classList.add('hidden');
 
 }
 
 // function for Trending
 
-function  trending(){
+function trending() {
 
     const isTrendingIs = dataForTrendPick.filter(element => element.others_info.is_trending === true);
 
@@ -171,7 +206,7 @@ function  trending(){
 
 // function for Today's Pick
 
-function pick(){
+function pick() {
 
     const isTodaysPick = dataForTrendPick.filter(element => element.others_info.is_todays_pick === true);
 
@@ -183,18 +218,18 @@ function pick(){
 
 // function for rating
 
-function rating(rating){
+function rating(rating) {
 
     let ratingInnerHTML = "";
 
-    for(let i=0; i < Math.floor(rating) ; i++){
+    for (let i = 0; i < Math.floor(rating); i++) {
 
-        ratingInnerHTML += `<i class="fa-solid fa-star"> </i>` ;
+        ratingInnerHTML += `<i class="fa-solid fa-star"> </i>`;
     }
 
-    if(rating - Math.floor(rating) > 0){
+    if (rating - Math.floor(rating) > 0) {
 
-        ratingInnerHTML += `<i class="fa-solid fa-star-half"> </i>` ;
+        ratingInnerHTML += `<i class="fa-solid fa-star-half"> </i>`;
     }
 
     return ratingInnerHTML;
