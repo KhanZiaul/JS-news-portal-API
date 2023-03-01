@@ -72,10 +72,9 @@ function showCategoryNameList(data, categoryName) {
 
              <div class="flex gap-4">
                 <div> 
-                <img src="${element.author.img
-            }" class="w-[50px] rounded-full" alt="no image found"> </div>
+                <img src="${element.author.img}" class="w-[50px] rounded-full" alt="no image found"> </div>
                 <div> 
-                <h2 > ${element.author.name?element.author.name : 'unknown'} </h2>
+                <h2 > ${element.author.name?element.author.name : 'Unknown'} </h2>
                 <h2> ${element.author.published_date} </h2>
                 </div>
             </div>
@@ -135,7 +134,26 @@ function showDetails(data) {
 
     detailsNews.innerText = data.details;
 
-    console.log(data)
+    const isTrend = document.getElementById('isTrend');
+
+    data.others_info.is_trending? isTrend.classList.remove('hidden') : isTrend.classList.add('hidden');
+
+    console.log(data.others_info.is_trending)
 }
+
+// others_info is_todays_pick is_trending
+
+function pick(){
+
+    console.log('click');
+}
+function trending(){
+
+    console.log('click2');
+}
+
+
+
+
 
 newsData();

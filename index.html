@@ -69,7 +69,7 @@
 
         <section class=" border-2 bg-white mt-5 p-5">
 
-            <h2 class="text-2xl"><span id="categoryItems">0</span> items found for <span id="categoryName"></span></h2>
+            <h2 class="text-2xl"><span id="categoryItems">0</span> items found for <span id="categoryName">Movie News</span></h2>
 
         </section>
 
@@ -81,7 +81,7 @@
                 <div class="mb-4">
 
                     <label class="text-xl mr-3"> Sort By View </label>
-                    <select name="" id="select" class="p-2">
+                    <select onchange="changeValue()" name="" id="select" class="p-2">
                         <option value="Default">Default</option>
                         <option value="Breaking News">Breaking News</option>
                         <option value="Regular News">Regular News</option>
@@ -95,8 +95,8 @@
                 </div>
 
                 <div class="flex gap-3">
-                    <button id="pick" class="block bg-sky-500 p-2 text-white">Today's pick</button>
-                    <button id="trending" class="block bg-gray-400 text-white p-2">Trending</button>
+                    <button onclick="pick()" id="pick" class="block bg-sky-500 p-2 text-white">Today's pick</button>
+                    <button onclick="trending()" id="trending" class="block bg-gray-400 text-white p-2">Trending</button>
                 </div>
             </div>
         </section>
@@ -123,6 +123,7 @@
             <input type="checkbox" id="my-modal" class="modal-toggle" />
             <div class="modal">
                 <div class="modal-box relative">
+                    <span class="hidden inline-block whitespace-nowrap rounded-[0.27rem] bg-neutral-800 px-[0.65em] pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-neutral-50 dark:bg-neutral-900" id="isTrend"> Trending</span>
 
                     <label for="my-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
