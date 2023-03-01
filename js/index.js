@@ -60,6 +60,7 @@ function showCategoryNameList(data, categoryName) {
         createDiv.innerHTML = `
     
         <div class="w-[50%]">
+
             <img src="${element.image_url}" class="w-[600px]" alt="no image found">
         </div>
         <div class="w-[50%]">
@@ -67,23 +68,25 @@ function showCategoryNameList(data, categoryName) {
             <h2 class="text-justify font-bold mb-3">${element.title}</h2>
             <h2 class="text-justify">${element.details.slice(0, 200)}...</h2>
 
-         <div class="mt-4">
+         <div class="flex justify-between items-center mt-24">
+
              <div class="flex gap-4">
                 <div> 
                 <img src="${element.author.img
             }" class="w-[50px] rounded-full" alt="no image found"> </div>
                 <div> 
-                <h2> ${element.author.name} </h2>
+                <h2 > ${element.author.name} </h2>
                 <h2> ${element.author.published_date} </h2>
                 </div>
-               </div>
+            </div>
+
+            <div class="flex gap-2">
+               <div> <i class="fa-solid fa-eye"> </i> </div>
+               <div> <p>${element.total_view}</p> </div>
+            </div>
 
             <div>
-            
-              </div>
-
-            <div>
-            
+            <div> <i onclick="details('${element._id}')" class="fa-solid fa-arrow-right cursor-pointer"></i>  </div>
                </div>
             
         </div>
@@ -93,8 +96,22 @@ function showCategoryNameList(data, categoryName) {
         news.appendChild(createDiv);
     });
 
-    console.log(data[0]);
+    console.log(data[0]._id);
 
+}
+
+
+function details(serial){
+
+    const url = `https://openapi.programming-hero.com/api/news/${serial}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => showDetails(data.data[0]))
+}
+
+function showDetails(data){
+
+    console.log(data)
 }
 
 newsData();
