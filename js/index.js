@@ -15,17 +15,37 @@ function showAllNews(allNews){
 
         createLists.innerHTML = `
 
-        <p class="font-bold"> ${element.category_name} </P>
+        <p class="font-bold cursor-pointer" onclick="showCategory('${element.category_id}', '${element.category_name}')"> ${element.category_name} </P>
 
         `;
 
         categoryName.appendChild(createLists);
 
-        console.log(element);
-
     });
 
-    // console.log(allNews.data.news_category[0]);
+}
+
+function showCategory(categoryId,categoryName){
+
+    const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
+
+    fetch(url)
+
+    .then(res => res.json())
+
+    .then(data => showCategoryNameId(data.data,categoryName))
+}
+
+function showCategoryNameId(data,categoryName){
+
+    console.log(data);
+
+    document.getElementById('categoryItems').innerText = data.length;
+
+    document.getElementById('categoryName').innerText = categoryName;
+
+    console.log('clicked');
+
 }
 
 newsData();
