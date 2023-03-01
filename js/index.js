@@ -19,7 +19,7 @@ function showAllNews(allNews) {
 
         createLists.innerHTML = `
 
-        <p class="font-bold cursor-pointer" onclick="showCategory('${element.category_id}', '${element.category_name}')"> ${element.category_name} </P>
+        <p class="font-bold cursor-pointer" onclick="showCategory('${element?.category_id}', '${element?.category_name}')"> ${element?.category_name} </P>
 
         `;
 
@@ -59,6 +59,8 @@ function showCategoryNameList(data, categoryName) {
 
     data.forEach(element => {
 
+        console.log(element);
+
         const createDiv = document.createElement('div');
 
         createDiv.classList.add('flex');
@@ -71,45 +73,39 @@ function showCategoryNameList(data, categoryName) {
     
         <div class="w-[50%]">
 
-            <img src="${element.image_url}" class="w-[600px]" alt="no image found">
+            <img src="${element?.image_url}" class="w-[600px]" alt="no image found">
         </div>
         <div class="w-[50%]">
 
-            <h2 class="text-justify font-bold mb-3">${element.title}</h2>
-            <h2 class="text-justify">${element.details.slice(0, 200)}...</h2>
+            <h2 class="text-justify font-bold mb-3">${element?.title}</h2>
+            <h2 class="text-justify">${element?.details.slice(0, 200)}...</h2>
 
          <div class="flex justify-between items-center mt-24">
 
              <div class="flex gap-4">
                 <div> 
-                <img src="${element.author.img}" class="w-[50px] rounded-full" alt="no image found"> </div>
+                <img src="${element?.author?.img}" class="w-[50px] rounded-full" alt="no image found"> </div>
                 <div> 
-                <h2 > ${element.author.name ? element.author.name : 'Unknown'} </h2>
-                <h2> ${element.author.published_date} </h2>
+                <h2 > ${element?.author?.name ? element.author.name : 'Unknown'} </h2>
+                <h2> ${element?.author?.published_date} </h2>
                 </div>
             </div>
 
             <div class="flex gap-2">
                <div> <i class="fa-solid fa-eye"> </i> </div>
-               <div> <p>${element.total_view ? element.total_view : 'No view'}</p> </div>
+               <div> <p>${element?.total_view ? element.total_view : 'No view'}</p> </div>
             </div>
 
             <div class="flex gap-2">
 
-               <div> <i class="fa-solid fa-star"></i> </div>
+               ${rating(element.rating.number)}
 
-               <div> <i class="fa-solid fa-star"></i> </div>
-
-               <div> <i class="fa-solid fa-star"></i> </div>
-
-               <div> <i class="fa-solid fa-star"></i> </div>
-               
-               <div> <i class="fa-solid fa-star"></i> </div>
+               <div> <p> ${element.rating.number}</p> </div>
 
             </div>
 
             <div>
-            <div> <label onclick="details('${element._id}')" for="my-modal" class="fa-solid fa-arrow-right cursor-pointer"></label> </div>
+            <div> <label onclick="details('${element?._id}')" for="my-modal" class="fa-solid fa-arrow-right cursor-pointer"></label> </div>
                </div>
             
         </div>
@@ -134,7 +130,7 @@ function showDetails(data) {
 
     const image = document.getElementById('image');
 
-    image.setAttribute('src', `${data.image_url}`);
+    image.setAttribute('src', `${data?.image_url}`);
 
     const title = document.getElementById('title');
 
@@ -146,11 +142,11 @@ function showDetails(data) {
 
     const isTrend = document.getElementById('isTrend');
 
-    data.others_info.is_trending ? isTrend.classList.remove('hidden') : isTrend.classList.add('hidden');
+    data?.others_info?.is_trending ? isTrend.classList.remove('hidden') : isTrend.classList.add('hidden');
 
 }
 
-// is_todays_pick is_trending 
+// function for Trending
 
 function  trending(){
 
@@ -162,14 +158,33 @@ function  trending(){
 
 }
 
+// function for Today's Pick
+
 function pick(){
 
     const isTodaysPick = dataForTrendPick.filter(element => element.others_info.is_todays_pick === true);
-
-    console.log(isTodaysPick);
 
     showCategoryNameList(isTodaysPick, categoryNameIs);
 
     document.getElementById('categoryName').innerText = "Today's Pick";
 
+}
+
+// function for rating
+
+function rating(rating){
+
+    let ratingInnerHTML = "";
+
+    for(let i=0; i < Math.floor(rating) ; i++){
+
+        ratingInnerHTML += `<i class="fa-solid fa-star"> </i>` ;
+    }
+
+    if(rating - Math.floor(rating) > 0){
+
+        ratingInnerHTML += `<i class="fa-solid fa-star-half"> </i>` ;
+    }
+
+    return ratingInnerHTML;
 }
