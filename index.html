@@ -15,6 +15,9 @@
 <body>
 
     <header>
+
+        <!-- navigation -->
+
         <div class="navbar bg-base-100 px-10 mt-5 w-[90%] mx-auto">
             <div class="flex-1">
               <a class="btn btn-primary normal-case text-xl">News</a>
@@ -52,18 +55,46 @@
 
     <main class="px-10 mt-5 w-[90%] mx-auto">
 
-        <!-- show category name -->
+        <!-- show category name section -->
 
         <section class="flex flex-col lg:flex-row justify-between items-center" id="category_name">
 
         </section>
 
-        <!-- show category name and list -->
+        <!-- show category name and list section -->
 
         <section class=" border-2 bg-white mt-5 p-5">
 
             <h2 class="text-2xl"><span id="categoryItems">0</span> items found for <span id="categoryName"></span></h2>
 
+        </section>
+
+        <!-- sort , trending and today's pick section -->
+
+        <section>
+            <div class="md:flex justify-between mt-7">
+
+                <div class="mb-4">
+
+                    <label class="text-xl mr-3"> Sort By View  </label>
+                    <select name="" id="select" class="p-2">
+                    <option value="Default">Default</option>
+                    <option value="Breaking News">Breaking News</option>
+                    <option value="Regular News">Regular News</option>
+                    <option value="International News">International News</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Culture">Culture</option>
+                    <option value="Arts">Arts</option>
+                    <option value="All News">All News</option>
+                </select>
+                </div>
+
+                <div class="flex gap-3">
+                    <button id="pick" class="block bg-sky-500 p-2 text-white">Today's pick</button>
+                    <button id="trending" class="block bg-gray-400 text-white p-2">Trending</button>
+                </div>
+            </div>
         </section>
 
     </main>
