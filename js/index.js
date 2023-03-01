@@ -1,11 +1,11 @@
 const newsData = () => {
 
     fetch('https://openapi.programming-hero.com/api/news/categories')
-    .then(res => res.json())
-    .then(news => showAllNews(news))
+        .then(res => res.json())
+        .then(news => showAllNews(news))
 }
 
-function showAllNews(allNews){
+function showAllNews(allNews) {
 
     const categoryName = document.getElementById('category_name');
 
@@ -25,18 +25,18 @@ function showAllNews(allNews){
 
 }
 
-function showCategory(categoryId,categoryName){
+function showCategory(categoryId, categoryName) {
 
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
 
     fetch(url)
 
-    .then(res => res.json())
+        .then(res => res.json())
 
-    .then(data => showCategoryNameId(data.data,categoryName))
+        .then(data => showCategoryNameList(data.data, categoryName))
 }
 
-function showCategoryNameId(data,categoryName){
+function showCategoryNameList(data, categoryName) {
 
     console.log(data);
 
