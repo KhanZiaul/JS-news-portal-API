@@ -162,5 +162,17 @@ function  trending(){
 
 }
 
+function pick(){
+
+    const isTodaysPick = dataForTrendPick.filter(element => element.others_info.is_todays_pick === true);
+
+    console.log(isTodaysPick);
+
+    showCategoryNameList(isTodaysPick, categoryNameIs);
+
+    document.getElementById('categoryName').innerText = "Today's Pick";
+
+}
+
 
 newsData();
