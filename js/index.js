@@ -173,6 +173,3 @@ function pick(){
     document.getElementById('categoryName').innerText = "Today's Pick";
 
 }
-
-
-newsData();
