@@ -14,6 +14,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
+
 <body>
 
     <header>
@@ -22,37 +23,38 @@
 
         <div class="navbar bg-base-100 px-10 mt-5 w-[90%] mx-auto">
             <div class="flex-1">
-              <a class="btn btn-primary text-xl">News</a>
-              <p class="text-xl ml-2">Portal</p>
+                <a class="btn btn-primary text-xl">News</a>
+                <p class="text-xl ml-2">Portal</p>
             </div>
             <div class="flex-none gap-2">
-              <div class="flex gap-5">
-                 <p class="text-xl">News</p>
-                 <p class="text-xl mr-5">Blogs</p>
-              </div>
-              <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                  <div class="w-10 rounded-full">
-                    <img src="./Image/khanZia.jpg" />
-                  </div>
-                </label>
-                <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                  <li>
-                    <a class="justify-between">
-                      Profile
-                      <span class="badge">New</span>
-                    </a>
-                  </li>
-                  <li><a>Settings</a></li>
-                  <li><a>Logout</a></li>
-                </ul>
-              </div>
+                <div class="flex gap-5">
+                    <p class="text-xl">News</p>
+                    <p class="text-xl mr-5">Blogs</p>
+                </div>
+                <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img src="./Image/khanZia.jpg" />
+                        </div>
+                    </label>
+                    <ul tabindex="0"
+                        class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                        <li>
+                            <a class="justify-between">
+                                Profile
+                                <span class="badge">New</span>
+                            </a>
+                        </li>
+                        <li><a>Settings</a></li>
+                        <li><a>Logout</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
+        </div>
 
-          <div class="px-10 mt-5 w-[90%] mx-auto">
-            <hr >
-          </div>
+        <div class="px-10 mt-5 w-[90%] mx-auto">
+            <hr>
+        </div>
     </header>
 
     <main class="px-10 mt-5 w-[90%] mx-auto">
@@ -78,18 +80,18 @@
 
                 <div class="mb-4">
 
-                    <label class="text-xl mr-3"> Sort By View  </label>
+                    <label class="text-xl mr-3"> Sort By View </label>
                     <select name="" id="select" class="p-2">
-                    <option value="Default">Default</option>
-                    <option value="Breaking News">Breaking News</option>
-                    <option value="Regular News">Regular News</option>
-                    <option value="International News">International News</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Culture">Culture</option>
-                    <option value="Arts">Arts</option>
-                    <option value="All News">All News</option>
-                </select>
+                        <option value="Default">Default</option>
+                        <option value="Breaking News">Breaking News</option>
+                        <option value="Regular News">Regular News</option>
+                        <option value="International News">International News</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Culture">Culture</option>
+                        <option value="Arts">Arts</option>
+                        <option value="All News">All News</option>
+                    </select>
                 </div>
 
                 <div class="flex gap-3">
@@ -108,9 +110,26 @@
             </div>
 
             <div class="flex items-center justify-around">
-                
+
             </div>
 
+        </section>
+
+        <section>
+
+            <input type="checkbox" id="my-modal" class="modal-toggle" />
+            <div class="modal">
+                <div class="modal-box relative">
+
+                    <label for="my-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+
+                    <img id="image" src="" alt="no image yet">
+
+                    <h3 id="title" class="text-lg font-bold"></h3>
+
+                    <p id="detailsNews" class="py-4"></p>
+                </div>
+            </div>
         </section>
 
     </main>

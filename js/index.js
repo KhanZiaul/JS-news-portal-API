@@ -86,7 +86,7 @@ function showCategoryNameList(data, categoryName) {
             </div>
 
             <div>
-            <div> <i onclick="details('${element._id}')" class="fa-solid fa-arrow-right cursor-pointer"></i>  </div>
+            <div> <label onclick="details('${element._id}')" for="my-modal" class="fa-solid fa-arrow-right cursor-pointer"></label> </div>
                </div>
             
         </div>
@@ -101,15 +101,27 @@ function showCategoryNameList(data, categoryName) {
 }
 
 
-function details(serial){
+function details(serial) {
 
     const url = `https://openapi.programming-hero.com/api/news/${serial}`;
     fetch(url)
-    .then(res => res.json())
-    .then(data => showDetails(data.data[0]))
+        .then(res => res.json())
+        .then(data => showDetails(data.data[0]))
 }
 
-function showDetails(data){
+function showDetails(data) {
+
+    const image = document.getElementById('image');
+
+    image.setAttribute('src',`${data.image_url}`);
+
+    const title = document.getElementById('title');
+
+    title.innerText = data.title
+
+    const detailsNews = document.getElementById('detailsNews');
+
+    detailsNews.innerText = data.details;
 
     console.log(data)
 }
