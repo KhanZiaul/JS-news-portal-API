@@ -45,32 +45,55 @@ function showCategoryNameList(data, categoryName) {
 
     const news = document.getElementById('news');
 
-    news.innerHTML = ""; 
+    news.innerHTML = "";
 
-    data.forEach(element =>{
+    data.forEach(element => {
 
         const createDiv = document.createElement('div');
 
         createDiv.classList.add('flex');
 
-        createDiv.classList.add('p-5'); 
+        createDiv.classList.add('p-5');
 
         createDiv.classList.add('gap-5');
-    
+
         createDiv.innerHTML = `
     
         <div class="w-[50%]">
             <img src="${element.image_url}" class="w-[600px]" alt="no image found">
         </div>
         <div class="w-[50%]">
-            <h2 class="text-justify">${element.details}</h2>
+
+            <h2 class="text-justify font-bold mb-3">${element.title}</h2>
+            <h2 class="text-justify">${element.details.slice(0, 200)}...</h2>
+
+         <div class="mt-4">
+             <div class="flex gap-4">
+                <div> 
+                <img src="${element.author.img
+            }" class="w-[50px] rounded-full" alt="no image found"> </div>
+                <div> 
+                <h2> ${element.author.name} </h2>
+                <h2> ${element.author.published_date} </h2>
+                </div>
+               </div>
+
+            <div>
+            
+              </div>
+
+            <div>
+            
+               </div>
+            
         </div>
+    </div>
         `;
 
         news.appendChild(createDiv);
     });
 
-    console.log(data[0].details);
+    console.log(data[0]);
 
 }
 
