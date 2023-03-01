@@ -75,14 +75,28 @@ function showCategoryNameList(data, categoryName) {
                 <img src="${element.author.img
             }" class="w-[50px] rounded-full" alt="no image found"> </div>
                 <div> 
-                <h2 > ${element.author.name} </h2>
+                <h2 > ${element.author.name?element.author.name : 'unknown'} </h2>
                 <h2> ${element.author.published_date} </h2>
                 </div>
             </div>
 
             <div class="flex gap-2">
                <div> <i class="fa-solid fa-eye"> </i> </div>
-               <div> <p>${element.total_view}</p> </div>
+               <div> <p>${element.total_view?element.total_view : 'No view' }</p> </div>
+            </div>
+
+            <div class="flex gap-2">
+
+               <div> <i class="fa-solid fa-star"></i> </div>
+
+               <div> <i class="fa-solid fa-star"></i> </div>
+
+               <div> <i class="fa-solid fa-star"></i> </div>
+
+               <div> <i class="fa-solid fa-star"></i> </div>
+               
+               <div> <i class="fa-solid fa-star"></i> </div>
+
             </div>
 
             <div>
@@ -95,8 +109,6 @@ function showCategoryNameList(data, categoryName) {
 
         news.appendChild(createDiv);
     });
-
-    console.log(data[0]._id);
 
 }
 
