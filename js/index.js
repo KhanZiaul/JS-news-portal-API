@@ -1,9 +1,13 @@
+let dataForTrendPick = [];
+
+let categoryNameIs ;
+
 const newsData = () => {
 
     fetch('https://openapi.programming-hero.com/api/news/categories')
         .then(res => res.json())
-        .then(news => showAllNews(news))
-}
+        .then(news => showAllNews(news));
+};
 
 function showAllNews(allNews) {
 
@@ -23,7 +27,7 @@ function showAllNews(allNews) {
 
     });
 
-}
+};
 
 function showCategory(categoryId, categoryName) {
 
@@ -33,7 +37,14 @@ function showCategory(categoryId, categoryName) {
 
         .then(res => res.json())
 
-        .then(data => showCategoryNameList(data.data, categoryName))
+        .then((data) => {
+
+            dataForTrendPick = data.data;
+
+            categoryNameIs = categoryName;
+
+            showCategoryNameList(data.data, categoryName)
+        })
 }
 
 function showCategoryNameList(data, categoryName) {
@@ -41,7 +52,6 @@ function showCategoryNameList(data, categoryName) {
     document.getElementById('categoryItems').innerText = data.length;
 
     document.getElementById('categoryName').innerText = categoryName;
-
 
     const news = document.getElementById('news');
 
@@ -74,14 +84,14 @@ function showCategoryNameList(data, categoryName) {
                 <div> 
                 <img src="${element.author.img}" class="w-[50px] rounded-full" alt="no image found"> </div>
                 <div> 
-                <h2 > ${element.author.name?element.author.name : 'Unknown'} </h2>
+                <h2 > ${element.author.name ? element.author.name : 'Unknown'} </h2>
                 <h2> ${element.author.published_date} </h2>
                 </div>
             </div>
 
             <div class="flex gap-2">
                <div> <i class="fa-solid fa-eye"> </i> </div>
-               <div> <p>${element.total_view?element.total_view : 'No view' }</p> </div>
+               <div> <p>${element.total_view ? element.total_view : 'No view'}</p> </div>
             </div>
 
             <div class="flex gap-2">
@@ -124,7 +134,7 @@ function showDetails(data) {
 
     const image = document.getElementById('image');
 
-    image.setAttribute('src',`${data.image_url}`);
+    image.setAttribute('src', `${data.image_url}`);
 
     const title = document.getElementById('title');
 
@@ -136,24 +146,21 @@ function showDetails(data) {
 
     const isTrend = document.getElementById('isTrend');
 
-    data.others_info.is_trending? isTrend.classList.remove('hidden') : isTrend.classList.add('hidden');
+    data.others_info.is_trending ? isTrend.classList.remove('hidden') : isTrend.classList.add('hidden');
 
-    console.log(data.others_info.is_trending)
 }
 
-// others_info is_todays_pick is_trending
+// is_todays_pick is_trending 
 
-function pick(){
+function  trending(){
 
-    console.log('click');
+    const isTrendingIs = dataForTrendPick.filter(element => element.others_info.is_trending === true);
+
+    showCategoryNameList(isTrendingIs, categoryNameIs);
+
+    document.getElementById('categoryName').innerText = 'Trending';
+
 }
-function trending(){
-
-    console.log('click2');
-}
-
-
-
 
 
 newsData();
