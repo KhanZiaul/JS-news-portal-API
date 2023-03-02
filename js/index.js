@@ -73,6 +73,8 @@ function showCategoryNameList(data, categoryName) {
 
         createDiv.classList.add('lg:flex');
 
+        createDiv.classList.add('p-3');
+
         createDiv.classList.add('lg:p-5');
 
         createDiv.classList.add('gap-3');
