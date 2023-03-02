@@ -71,7 +71,7 @@ function showCategoryNameList(data, categoryName) {
 
         const createDiv = document.createElement('div');
 
-        createDiv.classList.add('flex');
+        createDiv.classList.add('lg:flex');
 
         createDiv.classList.add('p-5');
 
@@ -79,18 +79,18 @@ function showCategoryNameList(data, categoryName) {
 
         createDiv.innerHTML = `
     
-        <div class="w-[50%]">
+        <div class="lg:w-[50%]">
 
-            <img src="${element?.image_url}" class="w-[600px]" alt="no image found">
+            <img src="${element?.image_url}" class="w-full lg:w-[600px]" alt="no image found">
         </div>
-        <div class="w-[50%]">
+        <div class="lg:w-[50%]">
 
             <h2 class="text-justify font-bold mb-3">${element?.title}</h2>
             <h2 class="text-justify">${element?.details.slice(0, 200)}...</h2>
 
          <div class="flex justify-between items-center mt-24">
 
-             <div class="flex gap-4">
+             <div class="flex gap-2 md:gap-4">
                 <div> 
                 <img src="${element?.author?.img}" class="w-[50px] rounded-full" alt="no image found"> </div>
                 <div> 
