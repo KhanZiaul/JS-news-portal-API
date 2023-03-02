@@ -35,7 +35,7 @@ function showAllNews(allNews) {
 
 // fixed news section
 
-document.getElementById('fixed-news').appendChild(showCategory('05', 'Entertainment'));
+document.getElementById('fixed-news').appendChild(showCategory('08', 'All News'));
 
 // categoryId fetch
 
