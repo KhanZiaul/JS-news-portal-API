@@ -37,6 +37,8 @@ function showAllNews(allNews) {
 
 function showCategory(categoryId, categoryName) {
 
+    console.log(categoryId, categoryName);
+
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
 
     fetch(url)
@@ -53,6 +55,9 @@ function showCategory(categoryId, categoryName) {
         })
 }
 
+
+
+
 // show category name and list section & card section
 
 function showCategoryNameList(data, categoryName) {
@@ -66,8 +71,6 @@ function showCategoryNameList(data, categoryName) {
     news.innerHTML = "";
 
     data.forEach(element => {
-
-        console.log(element);
 
         const createDiv = document.createElement('div');
 
@@ -142,8 +145,6 @@ function details(serial) {
 // modal section 
 
 function showDetails(data) {
-
-    console.log(data);
 
     const image = document.getElementById('image');
 
@@ -238,3 +239,56 @@ function rating(rating) {
 
     return ratingInnerHTML;
 }
+
+// select section
+
+function changeValue() {
+
+    if (select.value === 'Breaking News') {
+
+        showCategory('01', select.value);
+
+    }
+
+    else if (select.value === 'Regular News') {
+
+        showCategory('02', select.value);
+
+    }
+
+    else if (select.value === 'International News') {
+
+        showCategory('03', select.value);
+
+    }
+
+    else if (select.value === 'Sports') {
+
+        showCategory('04', select.value);
+
+    }
+
+    else if (select.value === 'Entertainment') {
+
+        showCategory('05', select.value);
+
+    }
+
+    else if (select.value === 'Culture') {
+
+        showCategory('06', select.value);
+
+    }
+
+    else if (select.value === 'Arts') {
+
+        showCategory('07', select.value);
+
+    }
+
+    else if (select.value === 'All News') {
+
+        showCategory('08', select.value);
+
+    }
+};
