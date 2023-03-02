@@ -73,9 +73,11 @@ function showCategoryNameList(data, categoryName) {
 
         createDiv.classList.add('lg:flex');
 
-        createDiv.classList.add('p-5');
+        createDiv.classList.add('lg:p-5');
 
-        createDiv.classList.add('gap-5');
+        createDiv.classList.add('gap-3');
+
+        createDiv.classList.add('lg:gap-5');
 
         createDiv.innerHTML = `
     
@@ -88,7 +90,7 @@ function showCategoryNameList(data, categoryName) {
             <h2 class="text-justify font-bold mb-3">${element?.title}</h2>
             <h2 class="text-justify">${element?.details.slice(0, 200)}...</h2>
 
-         <div class="flex justify-between items-center mt-24">
+         <div class="flex flex-col md:flex-row justify-between items-center mt-10 lg:mt-24">
 
              <div class="flex gap-2 md:gap-4">
                 <div> 
