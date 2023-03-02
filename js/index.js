@@ -33,6 +33,10 @@ function showAllNews(allNews) {
 
 };
 
+// fixed news section
+
+document.getElementById('fixed-news').appendChild(showCategory('05', 'Entertainment'));
+
 // categoryId fetch
 
 function showCategory(categoryId, categoryName) {
@@ -56,8 +60,6 @@ function showCategory(categoryId, categoryName) {
 }
 
 
-
-
 // show category name and list section & card section
 
 function showCategoryNameList(data, categoryName) {
@@ -65,6 +67,8 @@ function showCategoryNameList(data, categoryName) {
     document.getElementById('categoryItems').innerText = data.length;
 
     document.getElementById('categoryName').innerText = categoryName;
+
+    const fixedNews = document.getElementById('fixed-news');
 
     const news = document.getElementById('news');
 
